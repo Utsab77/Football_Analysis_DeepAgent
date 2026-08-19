@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+evaluation/results/*
+!evaluation/results/.gitkeep
+*.pkl
+*.joblib
+.pytest_cache/
+.coverage
+node_modules/
+.next/

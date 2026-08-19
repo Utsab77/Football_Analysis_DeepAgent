@@ -1,0 +1,7 @@
+[
+  {
+    "id": "task_01",
+    "prompt": "Analyze Arsenal vs Chelsea and predict the outcome.",
+    "min_steps": 3
+  }
+]
