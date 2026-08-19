@@ -73,6 +73,60 @@ def team_strength(df: pd.DataFrame, team: str, before_date, n: int = 20) -> floa
     return wins / len(recent)
 
 
+def league_position(df: pd.DataFrame, team: str, before_date) -> int:
+    """Calculate league position based on points accumulated before `before_date`.
+    
+    Returns position from 1 (top) to N (bottom). If no history, returns mid-table (10).
+    """
+    # Get all teams that have played before this date
+    all_teams = set(df["home_team"].unique()) | set(df["away_team"].unique())
+    
+    # Calculate points for each team
+    team_points = {}
+    for t in all_teams:
+        team_matches = _team_matches_before(df, t, before_date)
+        points = 0
+        for _, row in team_matches.iterrows():
+            is_home = row["home_team"] == t
+            result = row["result"]
+            won = (is_home and result == "H") or (not is_home and result == "A")
+            drew = result == "D"
+            points += 3 if won else (1 if drew else 0)
+        team_points[t] = points
+    
+    # Sort teams by points (descending), then alphabetically for ties
+    sorted_teams = sorted(team_points.keys(), key=lambda t: (-team_points[t], t))
+    
+    # Return position of the requested team (1-indexed)
+    if team in sorted_teams:
+        return sorted_teams.index(team) + 1
+    return 10  # Default to mid-table if team not found
+
+
+def build_features_for_match(df: pd.DataFrame, home_team: str, away_team: str, match_date) -> dict:
+    """Build the full feature dict for one upcoming match.
+
+    `df` should be the full historical match table; this function filters
+    to matches before `match_date` internally, so it's safe to pass in
+    the whole processed dataset.
+    """
+    home_pos = league_position(df, home_team, match_date)
+    away_pos = league_position(df, away_team, match_date)
+    
+    return {
+        "home_team_strength": team_strength(df, home_team, match_date),
+        "away_team_strength": team_strength(df, away_team, match_date),
+        "home_recent_form": recent_form(df, home_team, match_date),
+        "away_recent_form": recent_form(df, away_team, match_date),
+        "home_goals_avg": goals_avg(df, home_team, match_date, conceded=False),
+        "away_goals_avg": goals_avg(df, away_team, match_date, conceded=False),
+        "home_conceded_avg": goals_avg(df, home_team, match_date, conceded=True),
+        "away_conceded_avg": goals_avg(df, away_team, match_date, conceded=True),
+        "home_advantage": 1.0,
+        "league_position_difference": home_pos - away_pos,
+    }
+
+
 def build_features_for_match(df: pd.DataFrame, home_team: str, away_team: str, match_date) -> dict:
     """Build the full feature dict for one upcoming match.
 
