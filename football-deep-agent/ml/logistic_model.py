@@ -11,7 +11,7 @@ MODEL_PATH = "ml/artifacts/logistic_model.joblib"
 
 
 def train(train_df: pd.DataFrame) -> LogisticRegression:
-    model = LogisticRegression(max_iter=1000, multi_class="multinomial")
+    model = LogisticRegression(max_iter=1000)
     model.fit(train_df[FEATURE_COLUMNS], train_df["result"])
     return model
 

@@ -127,28 +127,6 @@ def build_features_for_match(df: pd.DataFrame, home_team: str, away_team: str, m
     }
 
 
-def build_features_for_match(df: pd.DataFrame, home_team: str, away_team: str, match_date) -> dict:
-    """Build the full feature dict for one upcoming match.
-
-    `df` should be the full historical match table; this function filters
-    to matches before `match_date` internally, so it's safe to pass in
-    the whole processed dataset.
-    """
-    return {
-        "home_team_strength": team_strength(df, home_team, match_date),
-        "away_team_strength": team_strength(df, away_team, match_date),
-        "home_recent_form": recent_form(df, home_team, match_date),
-        "away_recent_form": recent_form(df, away_team, match_date),
-        "home_goals_avg": goals_avg(df, home_team, match_date, conceded=False),
-        "away_goals_avg": goals_avg(df, away_team, match_date, conceded=False),
-        "home_conceded_avg": goals_avg(df, home_team, match_date, conceded=True),
-        "away_conceded_avg": goals_avg(df, away_team, match_date, conceded=True),
-        "home_advantage": 1.0,
-        # TODO: replace with real league table lookup before match_date
-        "league_position_difference": 0.0,
-    }
-
-
 def build_training_table(df: pd.DataFrame) -> pd.DataFrame:
     """Build a feature row for every match in `df`, for model training."""
     rows = []

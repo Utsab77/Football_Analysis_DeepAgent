@@ -1,0 +1,40 @@
+
+--- logistic ---
+  accuracy: 0.5313
+  precision_macro: 0.3543
+  recall_macro: 0.4463
+  f1_macro: 0.3888
+  log_loss: 0.9941
+  brier_A: 0.2006
+  brier_D: 0.1762
+  brier_H: 0.2138
+
+--- random_forest ---
+  accuracy: 0.5271
+  precision_macro: 0.3563
+  recall_macro: 0.4388
+  f1_macro: 0.3806
+  log_loss: 0.9958
+  brier_A: 0.2013
+  brier_D: 0.1770
+  brier_H: 0.2141
+
+--- xgboost ---
+  accuracy: 0.5186
+  precision_macro: 0.4575
+  recall_macro: 0.4414
+  f1_macro: 0.4029
+  log_loss: 1.0161
+  brier_A: 0.2055
+  brier_D: 0.1786
+  brier_H: 0.2200
+
+--- ensemble ---
+  accuracy: 0.5276
+  precision_macro: 0.4867
+  recall_macro: 0.4431
+  f1_macro: 0.3882
+  log_loss: 0.9944
+  brier_A: 0.2009
+  brier_D: 0.1764
+  brier_H: 0.2140
