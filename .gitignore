@@ -1,0 +1,38 @@
+# Environment files (contain secrets)
+.env
+.env.local
+.env.*.local
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project specific
+football-deep-agent/data/raw/*
+football-deep-agent/data/processed/*
+!football-deep-agent/data/raw/.gitkeep
+!football-deep-agent/data/processed/.gitkeep
+football-deep-agent/evaluation/results/*
+!football-deep-agent/evaluation/results/.gitkeep
+*.pkl
+*.joblib
+.pytest_cache/
+.coverage
+node_modules/
+.next/

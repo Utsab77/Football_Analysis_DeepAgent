@@ -1,0 +1,249 @@
+[
+  {
+    "id": "spec_001",
+    "category": "specified_match_prediction",
+    "prompt": "Predict the outcome of Arsenal vs Chelsea",
+    "expected_tools": ["get_team_stats", "get_recent_form", "get_head_to_head", "run_prediction_model"],
+    "expected_output_fields": ["home_win", "draw", "away_win"],
+    "difficulty": "easy"
+  },
+  {
+    "id": "spec_002",
+    "category": "specified_match_prediction",
+    "prompt": "Analyze Liverpool vs Manchester City and predict who will win",
+    "expected_tools": ["get_team_stats", "get_recent_form", "get_head_to_head", "run_prediction_model"],
+    "expected_output_fields": ["home_win", "draw", "away_win"],
+    "difficulty": "easy"
+  },
+  {
+    "id": "form_001",
+    "category": "recent_form_analysis",
+    "prompt": "What is Manchester United's current form over the last 5 matches?",
+    "expected_tools": ["get_team_stats", "get_recent_form"],
+    "expected_output_fields": ["form_points_per_game"],
+    "difficulty": "easy"
+  },
+  {
+    "id": "form_002",
+    "category": "recent_form_analysis",
+    "prompt": "Compare the recent form of Tottenham and Arsenal",
+    "expected_tools": ["get_team_stats", "get_recent_form"],
+    "expected_output_fields": ["form_points_per_game"],
+    "difficulty": "medium"
+  },
+  {
+    "id": "model_001",
+    "category": "model_comparison",
+    "prompt": "Compare predictions from logistic regression and XGBoost for Everton vs Brighton",
+    "expected_tools": ["run_prediction_model"],
+    "expected_output_fields": ["home_win", "draw", "away_win"],
+    "difficulty": "medium"
+  },
+  {
+    "id": "recovery_001",
+    "category": "recovery_from_failed_retrieval",
+    "prompt": "Predict Newcastle vs West Ham (team data unavailable for West Ham)",
+    "expected_tools": ["get_team_stats", "get_recent_form", "run_prediction_model"],
+    "expected_output_fields": ["home_win", "draw", "away_win"],
+    "difficulty": "hard",
+    "notes": "Should handle missing data gracefully"
+  },
+  {
+    "id": "scenario_001",
+    "category": "scenario_analysis",
+    "prompt": "What if Erling Haaland is injured for Manchester City vs Arsenal?",
+    "expected_tools": ["get_team_stats", "run_prediction_model", "scenario_analysis"],
+    "expected_output_fields": ["home_win", "draw", "away_win", "scenario_description"],
+    "difficulty": "medium"
+  },
+  {
+    "id": "missing_001",
+    "category": "missing_data_handling",
+    "prompt": "Predict Aston Villa vs Crystal Palace (no head-to-head data available)",
+    "expected_tools": ["get_team_stats", "get_recent_form", "run_prediction_model"],
+    "expected_output_fields": ["home_win", "draw", "away_win"],
+    "difficulty": "hard",
+    "notes": "Should proceed with available data"
+  },
+  {
+    "id": "long_001",
+    "category": "long_multi_step_analysis",
+    "prompt": "Provide a comprehensive analysis of the top 4 teams' chances in the league, including form, strength, and recent results",
+    "expected_tools": ["get_team_stats", "get_recent_form", "get_league_position"],
+    "expected_output_fields": ["analysis"],
+    "difficulty": "hard"
+  },
+  {
+    "id": "delegate_001",
+    "category": "sub_agent_delegation",
+    "prompt": "Analyze Chelsea's season so far with detailed team statistics",
+    "expected_tools": ["team_analysis"],
+    "expected_output_fields": ["form_points_per_game", "strength", "league_position"],
+    "difficulty": "medium"
+  },
+  {
+    "id": "context_001",
+    "category": "context_compression",
+    "prompt": "Give me a brief summary of the Arsenal vs Manchester United rivalry based on recent meetings",
+    "expected_tools": ["historical_analysis"],
+    "expected_output_fields": ["summary"],
+    "difficulty": "easy"
+  },
+  {
+    "id": "resume_001",
+    "category": "resuming_interrupted_task",
+    "prompt": "Continue the analysis from where we left off for the Premier League matchday predictions",
+    "expected_tools": ["get_team_stats", "get_recent_form", "run_prediction_model"],
+    "expected_output_fields": ["home_win", "draw", "away_win"],
+    "difficulty": "hard",
+    "notes": "Should check memory for previous context"
+  },
+  {
+    "id": "h2h_001",
+    "category": "head_to_head_analysis",
+    "prompt": "What is the head-to-head record between Liverpool and Everton in the last 10 meetings?",
+    "expected_tools": ["get_head_to_head"],
+    "expected_output_fields": ["total_matches", "team_a_wins", "team_b_wins", "draws"],
+    "difficulty": "easy"
+  },
+  {
+    "id": "league_001",
+    "category": "league_position_analysis",
+    "prompt": "What is the current Premier League table and who are the top 4?",
+    "expected_tools": ["get_league_position"],
+    "expected_output_fields": ["position", "team"],
+    "difficulty": "easy"
+  },
+  {
+    "id": "multi_team_001",
+    "category": "multi_team_comparison",
+    "prompt": "Compare the form and strength of Arsenal, Manchester City, and Liverpool",
+    "expected_tools": ["get_team_stats", "get_recent_form"],
+    "expected_output_fields": ["strength", "form_points_per_game"],
+    "difficulty": "medium"
+  },
+  {
+    "id": "detailed_001",
+    "category": "detailed_team_analysis",
+    "prompt": "Provide a detailed analysis of Brighton's attacking and defensive performance this season",
+    "expected_tools": ["team_analysis"],
+    "expected_output_fields": ["goals_scored_avg", "goals_conceded_avg", "summary"],
+    "difficulty": "medium"
+  },
+  {
+    "id": "prediction_explain_001",
+    "category": "prediction_with_explanation",
+    "prompt": "Predict West Ham vs Fulham and explain the key factors influencing the prediction",
+    "expected_tools": ["get_team_stats", "get_recent_form", "run_prediction_model"],
+    "expected_output_fields": ["home_win", "draw", "away_win", "key_factors"],
+    "difficulty": "medium"
+  },
+  {
+    "id": "season_001",
+    "category": "season_analysis",
+    "prompt": "Analyze the overall season performance of all teams in the Premier League",
+    "expected_tools": ["get_league_position", "get_team_stats"],
+    "expected_output_fields": ["analysis"],
+    "difficulty": "hard"
+  },
+  {
+    "id": "trend_001",
+    "category": "trend_analysis",
+    "prompt": "What are the current form trends for teams in the top 6 of the Premier League?",
+    "expected_tools": ["get_league_position", "get_recent_form"],
+    "expected_output_fields": ["form_points_per_game"],
+    "difficulty": "medium"
+  },
+  {
+    "id": "impact_001",
+    "category": "impact_analysis",
+    "prompt": "How would a manager change affect the performance of Chelsea?",
+    "expected_tools": ["team_analysis", "scenario_analysis"],
+    "expected_output_fields": ["summary", "scenario_description"],
+    "difficulty": "hard"
+  },
+  {
+    "id": "consistency_001",
+    "category": "consistency_check",
+    "prompt": "Run the same prediction for Arsenal vs Chelsea 3 times and check if results are consistent",
+    "expected_tools": ["run_prediction_model"],
+    "expected_output_fields": ["home_win", "draw", "away_win"],
+    "difficulty": "medium",
+    "notes": "Should produce identical results"
+  },
+  {
+    "id": "edge_001",
+    "category": "edge_case_handling",
+    "prompt": "Predict a match between two teams that have never played before",
+    "expected_tools": ["get_team_stats", "run_prediction_model"],
+    "expected_output_fields": ["home_win", "draw", "away_win"],
+    "difficulty": "hard",
+    "notes": "Should handle empty H2H gracefully"
+  },
+  {
+    "id": "calibration_001",
+    "category": "prediction_calibration",
+    "prompt": "Are the predicted probabilities well-calibrated? Analyze 10 recent predictions.",
+    "expected_tools": ["run_prediction_model", "evaluate_prediction"],
+    "expected_output_fields": ["calibration_score"],
+    "difficulty": "hard"
+  },
+  {
+    "id": "real_time_001",
+    "category": "real_time_data",
+    "prompt": "Get the latest league standings and predict the next match for Manchester City",
+    "expected_tools": ["get_league_position", "run_prediction_model"],
+    "expected_output_fields": ["position", "home_win", "draw", "away_win"],
+    "difficulty": "medium"
+  },
+  {
+    "id": "explanation_001",
+    "category": "explanation_quality",
+    "prompt": "Explain in detail why the model predicts a specific outcome for Arsenal vs Tottenham",
+    "expected_tools": ["get_team_stats", "get_recent_form", "run_prediction_model"],
+    "expected_output_fields": ["explanation"],
+    "difficulty": "medium"
+  },
+  {
+    "id": "error_001",
+    "category": "error_recovery",
+    "prompt": "The prediction failed for Aston Villa vs Wolves, please retry with alternative approach",
+    "expected_tools": ["get_team_stats", "run_prediction_model"],
+    "expected_output_fields": ["home_win", "draw", "away_win"],
+    "difficulty": "hard",
+    "notes": "Should implement retry logic"
+  },
+  {
+    "id": "aggregation_001",
+    "category": "result_aggregation",
+    "prompt": "Combine team analysis, head-to-head, and prediction for a comprehensive match report",
+    "expected_tools": ["team_analysis", "historical_analysis", "run_prediction_model"],
+    "expected_output_fields": ["summary", "prediction", "key_factors"],
+    "difficulty": "medium"
+  },
+  {
+    "id": "memory_001",
+    "category": "memory_recall",
+    "prompt": "What was the prediction for Arsenal vs Chelsea from our previous analysis?",
+    "expected_tools": ["memory_recall"],
+    "expected_output_fields": ["previous_analysis"],
+    "difficulty": "easy",
+    "notes": "Should use persistent memory"
+  },
+  {
+    "id": "planning_001",
+    "category": "complex_planning",
+    "prompt": "Create a detailed analysis plan for all matches in the next Premier League matchday",
+    "expected_tools": ["planner"],
+    "expected_output_fields": ["plan"],
+    "difficulty": "hard"
+  },
+  {
+    "id": "sub_agent_001",
+    "category": "sub_agent_coordination",
+    "prompt": "Coordinate team analysis, historical analysis, and scenario analysis for Manchester Derby",
+    "expected_tools": ["team_analysis", "historical_analysis", "scenario_analysis"],
+    "expected_output_fields": ["aggregated_result"],
+    "difficulty": "hard"
+  }
+]
